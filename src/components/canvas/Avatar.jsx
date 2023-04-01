@@ -11,7 +11,7 @@ import CanvasLoader from "../Loader";
 
 const Avatar = ({ isMobile }) => {
   const avatarTexture = useLoader(TextureLoader, "diego.jpg");
-  const avatarTextureActive = useLoader(TextureLoader, "diegoActive.png");
+  const avatarTextureActive = useLoader(TextureLoader, "diegoActive.jpg");
 
   const mesh = useRef();
 
