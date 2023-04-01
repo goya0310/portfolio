@@ -136,13 +136,13 @@ const AvatarLoader = () => {
         />
         <OrbitControls enableZoom={false} />
         <Avatar isMobile={isMobile} />
-         {!isMobile && (
+         {/* {!isMobile && (
           <>
             <Astronaut isMobile={isMobile} />
             <OddSphere isMobile={isMobile} />
             <Rocket isMobile={isMobile} />
           </>
-        )} 
+        )}  */}
        <Stars
           radius={100} // Radius of the inner sphere (default=100)
           depth={50} // Depth of area where stars should fit (default=50)
