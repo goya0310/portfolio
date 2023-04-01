@@ -30,7 +30,8 @@ const Avatar = ({ isMobile }) => {
       }}
       scale={active ? (isMobile ? 0.9 : 1) * 1.05 : isMobile ? 0.9 : 1}
       position={isMobile ? [-0.5, -1.7, 0] : [1.5, -0.5, 1]}
-      castShadow receiveShadow
+      castShadow
+      receiveShadow
     >
       <boxBufferGeometry
         attach="geometry"
@@ -40,7 +41,7 @@ const Avatar = ({ isMobile }) => {
       <meshStandardMaterial
         attach="material"
         map={active ? avatarTextureActive : avatarTexture}
-        color='#fff8eb'
+        color="#fff8eb"
       />
     </mesh>
   );
@@ -67,7 +68,12 @@ const Astronaut = ({ isMobile }) => {
   return (
     <mesh position={isMobile ? [2, -1, -1.4] : [6.5, 1.5, -1.4]}>
       <planeBufferGeometry attach="geometry" args={[1, 1]} color="0x800080" />
-      <meshBasicMaterial attach="material" map={astronaut} transparent color='#fff8eb' />
+      <meshBasicMaterial
+        attach="material"
+        map={astronaut}
+        transparent
+        color="#fff8eb"
+      />
     </mesh>
   );
 };
@@ -80,13 +86,17 @@ const Rocket = ({ isMobile }) => {
   useFrame(() => {
     setPosition((prevPosition) => prevPosition.add(new Vector3(0.02, 0.02, 0)));
     meshRef.current.position.copy(position);
-
   });
 
   return (
     <mesh ref={meshRef} scale={isMobile ? 0.6 : 0.7}>
       <planeBufferGeometry attach="geometry" args={[1, 1]} color="0x800080" />
-      <meshBasicMaterial attach="material" map={rocket} transparent color='#fff8eb' />
+      <meshBasicMaterial
+        attach="material"
+        map={rocket}
+        transparent
+        color="#fff8eb"
+      />
     </mesh>
   );
 };
@@ -126,13 +136,17 @@ const AvatarLoader = () => {
         />
         <OrbitControls enableZoom={false} />
         <Avatar isMobile={isMobile} />
-        <Astronaut isMobile={isMobile} />
-        <OddSphere isMobile={isMobile} />
-        <Rocket isMobile={isMobile} />
+        {/* {!isMobile && (
+          <>
+            <Astronaut isMobile={isMobile} />
+            <OddSphere isMobile={isMobile} />
+            <Rocket isMobile={isMobile} />
+          </>
+        )} */}
         <Stars
           radius={100} // Radius of the inner sphere (default=100)
           depth={50} // Depth of area where stars should fit (default=50)
-          count={5000} // Amount of stars (default=5000)
+          count={1000} // Amount of stars (default=5000)
           factor={4} // Size factor (default=4)
           saturation={0} // Saturation 0-1 (default=0)
           fade={true} // Faded dots (default=false)
