@@ -22,8 +22,8 @@ import materialUI from "./tech/materialUI.png";
 import threejs from "./tech/threejs.svg";
 
 import pokemonGif from "./pokemon.gif";
-import pokemon from "./pokemon.png"
-import grooveTickets from "./GrooveTickets.png";
+import pokemon from "./pokemon.jpg"
+import grooveTickets from "./GrooveTickets.jpg";
 import grooveTicketsGif from "./GrooveTickets.gif";
 import moon from "./moon.jpg";
 import normal from "./normal.jpg";
