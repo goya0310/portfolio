@@ -17,7 +17,7 @@ const Hero = () => {
             Hola, soy <span className="text-[#46A7B8]">Diego</span>
           </h1>
           {/* animate-typing */}
-          <p className={`overflow-hidden whitespace-nowrap ${styles.heroSubText} mt-2 text-white-100`}>
+          <p className={`animate-typing overflow-hidden whitespace-nowrap ${styles.heroSubText} mt-2 text-white-100`}>
             FullStack Web Developer
           </p>
         </div>

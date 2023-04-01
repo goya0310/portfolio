@@ -29,7 +29,7 @@ const Avatar = ({ isMobile }) => {
         setActive(!active);
       }}
       scale={active ? (isMobile ? 0.9 : 1) * 1.05 : isMobile ? 0.9 : 1}
-      position={isMobile ? [-0.5, -1.7, 0] : [1.5, -0.5, 1]}
+      position={isMobile ? [-0.5, -1, 0] : [1.5, -0.5, 1]}
       castShadow
       receiveShadow
     >
@@ -49,7 +49,7 @@ const Avatar = ({ isMobile }) => {
 
 const OddSphere = ({ isMobile }) => {
   return (
-    <mesh position={isMobile ? [2.5, -1, -2] : [7, 1.5, -2]}>
+    <mesh position={isMobile ? [2, 0, -2] : [7, 1.5, -2]}>
       <Sphere args={[1, 100, 200]} scale={0.5}>
         <MeshDistortMaterial
           color="#00B2FF"
@@ -66,7 +66,7 @@ const Astronaut = ({ isMobile }) => {
   const astronaut = useLoader(TextureLoader, "astronautFloating.png");
 
   return (
-    <mesh position={isMobile ? [2, -1, -1.4] : [6.5, 1.5, -1.4]}>
+    <mesh position={isMobile ? [1.5, 0, -1.4] : [6.5, 1.5, -1.4]}>
       <planeBufferGeometry attach="geometry" args={[1, 1]} color="0x800080" />
       <meshBasicMaterial
         attach="material"
@@ -106,7 +106,7 @@ const AvatarLoader = () => {
 
   useEffect(() => {
     // Add a listener for changes to the screen size
-    const mediaQuery = window.matchMedia("(max-width: 700px)");
+    const mediaQuery = window.matchMedia("(max-width: 500px)");
 
     // Set the initial value of the `isMobile` state variable
     setIsMobile(mediaQuery.matches);
