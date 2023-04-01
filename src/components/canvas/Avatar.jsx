@@ -143,7 +143,7 @@ const AvatarLoader = () => {
             <Rocket isMobile={isMobile} />
           </>
         )} */}
-        <Stars
+        {/* <Stars
           radius={100} // Radius of the inner sphere (default=100)
           depth={50} // Depth of area where stars should fit (default=50)
           count={1000} // Amount of stars (default=5000)
@@ -151,7 +151,7 @@ const AvatarLoader = () => {
           saturation={0} // Saturation 0-1 (default=0)
           fade={true} // Faded dots (default=false)
           position={[0, 0, -50]}
-        />
+        /> */}
       </Suspense>
     </Canvas>
   );
