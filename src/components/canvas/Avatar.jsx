@@ -33,7 +33,7 @@ const Avatar = ({ isMobile }) => {
       castShadow
       receiveShadow
     >
-      <boxBufferGeometry
+      <boxGeometry
         attach="geometry"
         args={[1.5, 1.5, 1.5]}
         color="0x800080"
