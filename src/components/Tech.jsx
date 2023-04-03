@@ -40,15 +40,14 @@ const Tech = () => {
     >
       {technologies.map((technology, index) => (
         <div
-          className={isMobile ? "w-20 h-20" : "w-28 h-28"}
+          className={isMobile ? "w-24 h-24" : "w-28 h-28"}
           key={technology.name}
         >
           {isMobile ? (
             <motion.div
               variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-              className="w-fit-content "
             >
-              <div className="bg-white w-full md:m-16 md:w-1/2 lg:w-1/3 p-4 rounded shadow-inner">
+              <div className="bg-white w-full p-2 rounded shadow-inner">
                 <img src={technology.icon} alt="icono" />
               </div>
             </motion.div>
