@@ -5,6 +5,8 @@ import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 import { useState } from "react";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { fadeIn } from "../utils/motion";
 
 const Tech = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -32,12 +34,14 @@ const Tech = () => {
 
   return (
     <div className="flex flex-row flex-wrap justify-center gap-10">
-      {technologies.map((technology) => (
+      {technologies.map((technology, index) => (
         <div className="w-28 h-28" key={technology.name}>
           {isMobile ? (
-            <div className="bg-white w-full md:w-1/2 lg:w-1/3 p-4 rounded shadow-inner">
-              <img src={technology.icon} alt="icono"  />
-            </div>
+            <motion.div variants={fadeIn("right", "spring", index * 0.5, 0.75)}>
+              <div className="bg-white w-full md:w-1/2 lg:w-1/3 p-4 rounded shadow-inner">
+                <img src={technology.icon} alt="icono" />
+              </div>
+            </motion.div>
           ) : (
             <BallCanvas icon={technology.icon} />
           )}
