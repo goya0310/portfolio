@@ -38,7 +38,7 @@ const Tech = () => {
         <div className="w-28 h-28" key={technology.name}>
           {isMobile ? (
             <motion.div variants={fadeIn("right", "spring", index * 0.5, 0.75)}>
-              <div className="bg-white w-full md:w-1/2 lg:w-1/3 p-4 rounded shadow-inner">
+              <div className="bg-white w-full md:m-16 md:w-1/2 lg:w-1/3 p-4 rounded shadow-inner">
                 <img src={technology.icon} alt="icono" />
               </div>
             </motion.div>

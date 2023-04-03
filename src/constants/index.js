@@ -27,14 +27,6 @@ export const hero = [
     id: "header",
     title: "Hola, soy ",
   },
-  {
-    id: "name",
-    title: "Diego",
-  },
-  {
-    id: "header2",
-    title: "FullStack Web Developer",
-  },
 ];
 
 export const navLinks = [
