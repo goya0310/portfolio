@@ -34,14 +34,15 @@ const Tech = () => {
 
   return (
     <div
-      className={
-        isMobile
-          ? `flex flex-row flex-wrap justify-center gap-5`
-          : `flex flex-row flex-wrap justify-center gap-10`
-      }
+      className={`flex flex-row flex-wrap justify-center gap-${
+        isMobile ? 5 : 10
+      }`}
     >
       {technologies.map((technology, index) => (
-        <div className={isMobile? "w-20 h-20": "w-28 h-28"} key={technology.name}>
+        <div
+          className={isMobile ? "w-20 h-20" : "w-28 h-28"}
+          key={technology.name}
+        >
           {isMobile ? (
             <motion.div
               variants={fadeIn("right", "spring", index * 0.5, 0.75)}
