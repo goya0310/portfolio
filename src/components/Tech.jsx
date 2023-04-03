@@ -45,7 +45,7 @@ const Tech = () => {
         >
           {isMobile ? (
             <motion.div
-              variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+              variants={fadeIn("up", "spring", index * 0.20, 0.75)}
             >
               <div className="bg-white w-full p-2 rounded shadow-inner">
                 <img src={technology.icon} alt="icono" />
