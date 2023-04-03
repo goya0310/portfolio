@@ -35,7 +35,9 @@ const Tech = () => {
       {technologies.map((technology) => (
         <div className="w-28 h-28" key={technology.name}>
           {isMobile ? (
-            <img src={technology.icon} alt="icono" className="bg-white" />
+            <div className="bg-white w-full md:w-1/2 lg:w-1/3 p-4 rounded shadow-inner">
+              <img src={technology.icon} alt="icono"  />
+            </div>
           ) : (
             <BallCanvas icon={technology.icon} />
           )}
