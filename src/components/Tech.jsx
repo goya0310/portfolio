@@ -47,8 +47,8 @@ const Tech = () => {
             <motion.div
               variants={fadeIn("up", "spring", index * 0.20, 0.75)}
             >
-              <div className="bg-white w-full p-2 rounded shadow-inner">
-                <img src={technology.icon} alt="icono" />
+              <div className="flex flex-col bg-white w-full p-2 rounded shadow-inner">
+                <img src={technology.icon} alt={technology.name} title={technology.name} />
               </div>
             </motion.div>
           ) : (

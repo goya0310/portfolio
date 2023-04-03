@@ -13,7 +13,12 @@ const Moon = ({ isMobile }) => {
   const mesh = useRef();
 
   return (
-    <mesh ref={mesh} scale={isMobile ? 0.85 : 0.6} position-y={0} rotation-y={0}>
+    <mesh
+      ref={mesh}
+      scale={isMobile ? 0.85 : 0.6}
+      position-y={0}
+      rotation-y={0}
+    >
       <sphereGeometry attach="geometry" args={[3, 32, 32]} />
       <meshStandardMaterial
         attach="material"
@@ -70,7 +75,6 @@ const MoonCanvas = () => {
           minPolarAngle={Math.PI / 2}
         />
         <Moon isMobile={isMobile} />
-
         <Preload all />
       </Suspense>
     </Canvas>

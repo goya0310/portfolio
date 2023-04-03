@@ -32,6 +32,7 @@ const Avatar = ({ isMobile }) => {
       position={isMobile ? [-0.3, -.3, 0] : [0.5, -0.5, 1]}
       castShadow
       receiveShadow
+      rotation-y={0}
     >
       <boxGeometry attach="geometry" args={[1.5, 1.5, 1.5]} color="0x800080" />
       <meshStandardMaterial
