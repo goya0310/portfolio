@@ -33,11 +33,20 @@ const Tech = () => {
   }, []);
 
   return (
-    <div className="flex flex-row flex-wrap justify-center gap-10">
+    <div
+      className={
+        isMobile
+          ? `flex flex-row flex-wrap justify-center gap-5`
+          : `flex flex-row flex-wrap justify-center gap-10`
+      }
+    >
       {technologies.map((technology, index) => (
         <div className="w-28 h-28" key={technology.name}>
           {isMobile ? (
-            <motion.div variants={fadeIn("right", "spring", index * 0.5, 0.75)}>
+            <motion.div
+              variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+              className="w-22"
+            >
               <div className="bg-white w-full md:m-16 md:w-1/2 lg:w-1/3 p-4 rounded shadow-inner">
                 <img src={technology.icon} alt="icono" />
               </div>
