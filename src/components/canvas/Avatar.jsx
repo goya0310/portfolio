@@ -29,7 +29,7 @@ const Avatar = ({ isMobile }) => {
         setActive(!active);
       }}
       scale={active ? (isMobile ? 0.9 : 1) * 1.05 : isMobile ? 0.9 : 1}
-      position={isMobile ? [-0.5, -0.7, 0] : [0.5, -0.5, 1]}
+      position={isMobile ? [-0.3, -.3, 0] : [0.5, -0.5, 1]}
       castShadow
       receiveShadow
     >
@@ -45,7 +45,7 @@ const Avatar = ({ isMobile }) => {
 
 const OddSphere = ({ isMobile }) => {
   return (
-    <mesh position={isMobile ? [2, 0, -2] : [5, 1.5, -2]}>
+    <mesh position={isMobile ? [2, 1, -2] : [5, 1.5, -2]}>
       <Sphere args={[1, 100, 200]} scale={0.5}>
         <MeshDistortMaterial
           color="#00B2FF"
@@ -62,7 +62,7 @@ const Astronaut = ({ isMobile }) => {
   const astronaut = useLoader(TextureLoader, "astronautFloating.png");
 
   return (
-    <mesh position={isMobile ? [1.5, 0, -1.4] : [4.5, 1.5, -1.4]}>
+    <mesh position={isMobile ? [1.5, 1, -1.4] : [4.5, 1.5, -1.4]}>
       <planeBufferGeometry attach="geometry" args={[1, 1]} color="0x800080" />
       <meshBasicMaterial
         attach="material"
