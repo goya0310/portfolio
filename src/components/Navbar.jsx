@@ -117,7 +117,7 @@ const Navbar = () => {
                 isChecked ? "text-secondary" : "text-white"
               } text-[18px] font-medium`}
             >
-              Sp
+              SP
             </div>
             <div className="flex justify-center items-center">
               <label className="relative inline-flex items-center cursor-pointer">
@@ -136,7 +136,7 @@ const Navbar = () => {
                 isChecked ? "text-white" : "text-secondary"
               } text-[18px] font-medium`}
             >
-              En
+              EN
             </div>
           </div>
           <img
@@ -152,7 +152,7 @@ const Navbar = () => {
             // black-gradient es el color de la ventana del menu, ver de Cambiar
           >
             <ul className="list-none flex sm:flex justify-end items-start flex-col gap-4">
-              {navLinks.map((link) => (
+              {source.map((link) => (
                 <li
                   key={link.id}
                   className={`${
