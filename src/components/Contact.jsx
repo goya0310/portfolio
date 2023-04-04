@@ -7,8 +7,10 @@ import { MoonCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { error, logo } from "../assets";
+import { useSelector } from "react-redux";
 
 const Contact = () => {
+  const isChecked = useSelector((state) => state.isChecked);
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
@@ -32,7 +34,7 @@ const Contact = () => {
     Swal.fire({
       imageUrl: error,
       imageHeight: 200,
-      title: "¡Error!",
+      title: "Error",
       text: message,
       confirmButtonText: "OK",
     });
@@ -42,7 +44,7 @@ const Contact = () => {
     Swal.fire({
       imageUrl: logo,
       imageHeight: 200,
-      title: "Enviado",
+      title: `${isChecked ? "Sent" : "Enviado"}`,
       text: message,
       confirmButtonText: "OK",
     });
@@ -68,7 +70,13 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          successAlert("Gracias. Le contestaré lo más pronto posible.");
+          successAlert(
+            `${
+              isChecked
+                ? "Thank you. I will get back to you as soon as possible."
+                : "Gracias. Le contestaré lo más pronto posible."
+            }`
+          );
 
           setForm({
             name: "",
@@ -79,7 +87,13 @@ const Contact = () => {
         (e) => {
           setLoading(false);
           console.error(e);
-          errorAlert("Ahh, algo salió mal. Por favor vuelva a intentar.");
+          errorAlert(
+            `${
+              isChecked
+                ? "Ahh, something went wrong. Please try again."
+                : "Ahh, algo salió mal. Por favor vuelva a intentar."
+            }`
+          );
         }
       );
   };
@@ -92,7 +106,9 @@ const Contact = () => {
         variants={slideIn("left", "tween", 0.2, 1)}
         className="flex-[0.75] bg-blue p-8 rounded-2xl shadow-card"
       >
-        <h3 className={styles.sectionHeadText}>Contacto.</h3>
+        <h3 className={styles.sectionHeadText}>
+          {isChecked ? "Contact." : "Contacto."}
+        </h3>
 
         <form
           ref={formRef}
@@ -100,7 +116,9 @@ const Contact = () => {
           className="mt-12 flex flex-col gap-8"
         >
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Su Nombre</span>
+            <span className="text-white font-medium mb-4">
+              {isChecked ? "Your Name" : "Su Nombre"}
+            </span>
             <input
               type="text"
               name="name"
@@ -110,7 +128,9 @@ const Contact = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Su Email</span>
+            <span className="text-white font-medium mb-4">
+              {isChecked ? "Your Email" : "Su Email"}
+            </span>
             <input
               type="email"
               name="email"
@@ -120,7 +140,9 @@ const Contact = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Su Mensaje</span>
+            <span className="text-white font-medium mb-4">
+              {isChecked ? "Your Message" : "Su Mensaje"}
+            </span>
             <textarea
               rows={7}
               name="message"
@@ -134,7 +156,9 @@ const Contact = () => {
             type="submit"
             className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
           >
-            {loading ? "Enviando..." : "Enviar"}
+            {loading
+              ? `${isChecked ? "Sending..." : "Enviando..."}`
+              : `${isChecked ? "Send" : "Enviar"}`}
           </button>
         </form>
       </motion.div>

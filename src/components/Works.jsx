@@ -4,18 +4,21 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
-import { projects } from "../constants";
+import { projects, worksIntro, worksIntroEn } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const ProjectCard = ({
   index,
   name,
   description,
+  descriptionEn,
   tags,
   image,
   imageGif,
   source_code_link,
+  isChecked,
 }) => {
   const [clicked, setClicked] = useState(false);
 
@@ -57,7 +60,9 @@ const ProjectCard = ({
 
         <div className="mt-5">
           <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
+          <p className="mt-2 text-secondary text-[14px]">
+            {isChecked? descriptionEn : description}
+          </p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-2">
@@ -76,10 +81,14 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+  const isChecked = useSelector((state) => state.isChecked);
+
   return (
     <>
       <motion.div variants={textVariant()}>
-        <h2 className={`${styles.sectionHeadText}`}>Proyectos.</h2>
+        <h2 className={`${styles.sectionHeadText}`}>
+          {isChecked ? "Projects." : "Proyectos."}
+        </h2>
       </motion.div>
 
       <div className="w-full flex">
@@ -87,13 +96,18 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Esta es una seleccion de mis proyectos mas recientes donde se pueden ver las habilidades que he ido adquiriendo como desarrollador FullStack. En cada uno se puede hacer click en play para tener una breve demo y un enlace directo al repositorio de GitHub para que puedas revisar el código fuente. Se puede ver como me he manejado en distintas tecnologías resolviendo desafíos técnicos y dando un enfoque orientado al cliente.
+          {isChecked ? worksIntroEn : worksIntro}
         </motion.p>
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7">
         {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+          <ProjectCard
+            key={`project-${index}`}
+            index={index}
+            {...project}
+            isChecked={isChecked}
+          />
         ))}
       </div>
     </>

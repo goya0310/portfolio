@@ -2,9 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { services } from "../constants";
+import { about, aboutEn, services, servicesEn } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
+import { useSelector } from "react-redux";
 
 const ServiceCard = ({ index, title, icon }) => (
   <div className="xs:w-[250px] w-full">
@@ -39,26 +40,25 @@ const ServiceCard = ({ index, title, icon }) => (
 );
 
 const About = () => {
+
+  const isChecked = useSelector((state) => state.isChecked);
+  const servicesLanguage = isChecked? servicesEn : services; 
+
   return (
     <>
       <motion.div variants={textVariant()}>
-        <h2 className={styles.sectionHeadText}>Descripción.</h2>
+        <h2 className={styles.sectionHeadText}>{isChecked? aboutEn[0] : about[0] }</h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        Soy Desarrollador Web full Stack en formación constante y apasionado por
-        crear soluciones innovadoras. Mi experiencia emprendiendo me llevó a
-        adquirir multiples habilidades entre las cuales la orientación a
-        resultados, trabajar en equipo y el enfoque al cliente son las
-        principales. Espero poder aplicar esta experiencia para dar vida a sus
-        proyectos!.
+        {isChecked? aboutEn[1] : about[1] }
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">
-        {services.map((service, index) => (
+        {servicesLanguage.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
       </div>

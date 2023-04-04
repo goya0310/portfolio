@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 import { styles } from "../styles";
 import { AvatarLoader } from "./canvas";
 
 const Hero = () => {
+  const isChecked = useSelector((state) => state.isChecked);
+  const textLanguages = ["Hola, soy ", "Hi, I'm "];
+
   return (
     <section className="relative w-full h-screen mx-auto">
       <div
@@ -14,10 +18,13 @@ const Hero = () => {
         </div>
         <div style={{ zIndex: 1 }}>
           <h1 className={`${styles.heroHeadText}`}>
-            Hola, soy <span className="text-[#46A7B8]">Diego</span>
+            {isChecked ? textLanguages[1] : textLanguages[0]}{" "}
+            <span className="text-[#46A7B8]">Diego</span>
           </h1>
           {/* animate-typing */}
-          <p className={`animate-typing overflow-hidden whitespace-nowrap ${styles.heroSubText} mt-2 text-white-100`}>
+          <p
+            className={`animate-typing overflow-hidden whitespace-nowrap ${styles.heroSubText} mt-2 text-white-100`}
+          >
             FullStack Web Developer
           </p>
         </div>
