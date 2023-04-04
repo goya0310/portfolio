@@ -2,12 +2,29 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
-import { navLinks } from "../constants";
+import { navLinks, navLinksEn } from "../constants";
 import { logo, menu, close, github, linkedInLogo } from "../assets";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { changeLanguage } from "../redux/actions";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  let dispatch = useDispatch();
+  console.log(isChecked);
+  useEffect(() => {
+    dispatch(changeLanguage(isChecked));
+  }, [dispatch, isChecked]);
+
+  let source = isChecked ? navLinksEn : navLinks;
 
   return (
     <nav
@@ -26,11 +43,38 @@ const Navbar = () => {
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
             Diego Llaya &nbsp;<span className="sm:block hidden">| FS Dev</span>
-            {/* 39min */}
           </p>
         </Link>
-        <ul className="list-none hidden sm:flex flex-row gap-10">
-          {navLinks.map((link) => (
+        <ul className="list-none hidden sm:flex flex-row gap-10 items-center">
+          <div className="flex justify-around gap-2">
+            <div
+              className={`${
+                isChecked ? "text-secondary" : "text-white"
+              } text-[18px] font-medium`}
+            >
+              Sp
+            </div>
+            <div className="flex justify-center items-center">
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  className="sr-only peer"
+                  checked={isChecked}
+                  onChange={handleChange}
+                />
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
+                <span className="text-sm font-medium text-white-900 dark:text-gray-300"></span>
+              </label>
+            </div>
+            <div
+              className={`${
+                isChecked ? "text-white" : "text-secondary"
+              } text-[18px] font-medium`}
+            >
+              En
+            </div>
+          </div>
+          {source.map((link) => (
             <li
               key={link.id}
               className={`${
@@ -67,6 +111,34 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="sm:hidden flex flex-1 justify-end items-center">
+        <div className="flex justify-around gap-2 mr-10">
+            <div
+              className={`${
+                isChecked ? "text-secondary" : "text-white"
+              } text-[18px] font-medium`}
+            >
+              Sp
+            </div>
+            <div className="flex justify-center items-center">
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  className="sr-only peer"
+                  checked={isChecked}
+                  onChange={handleChange}
+                />
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
+                <span className="text-sm font-medium text-white-900 dark:text-gray-300"></span>
+              </label>
+            </div>
+            <div
+              className={`${
+                isChecked ? "text-white" : "text-secondary"
+              } text-[18px] font-medium`}
+            >
+              En
+            </div>
+          </div>
           <img
             src={toggle ? close : menu}
             alt="menu"
