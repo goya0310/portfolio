@@ -125,6 +125,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              required
             />
           </label>
           <label className="flex flex-col">
@@ -137,7 +138,8 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-            />
+              required
+           />
           </label>
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">
@@ -149,6 +151,7 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              required
             />
           </label>
 
